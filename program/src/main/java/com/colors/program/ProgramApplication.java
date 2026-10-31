@@ -9,14 +9,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ProgramApplication implements CommandLineRunner {
 
+	private ColorPrinter colorprinter;
+
+	public ProgramApplication(ColorPrinter colorprinter){
+		this.colorprinter = colorprinter;
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(ProgramApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args){
-		final ColorPrinter printer = new ColorPrinterImpl();
-		System.out.println(printer.print());
+		System.out.println(colorprinter.print());
 	}
 
 }
